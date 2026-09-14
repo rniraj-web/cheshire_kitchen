@@ -1,0 +1,87 @@
+/* @tailwind css 
+
+base/components/utilities */
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1f2e23;
+  --color-ink-50: #eef1ee;
+  --color-ink-100: #d3dbd2;
+  --color-ink-400: #3e5344;
+  --color-ink-600: #26382c;
+  --color-ink-900: #141e17;
+
+  --color-stone-50: #faf8f3;
+  --color-stone-100: #f1ede3;
+  --color-stone-200: #e4dfd1;
+  --color-stone-300: #d2cbb8;
+
+  --color-brass: #a97d46;
+  --color-brass-light: #c9a06b;
+  --color-brass-dark: #815e31;
+
+  --color-charcoal: #221f1b;
+  --color-sage: #7c8b72;
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Karla", sans-serif;
+
+  --tracking-wide2: 0.02em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-stone-50 text-charcoal font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink;
+  }
+
+  :focus-visible {
+    outline: 2px solid #a97d46;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .hairline {
+    @apply border-t border-ink-100;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-6 md:px-10;
+  }
+
+  .eyebrow {
+    @apply text-sm text-brass;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-ink text-stone-50 px-6 py-3 text-sm tracking-wide2
+           hover:bg-ink-600 transition-colors duration-200;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-ink text-ink px-6 py-3 text-sm tracking-wide2
+           hover:bg-ink hover:text-stone-50 transition-colors duration-200;
+  }
+}

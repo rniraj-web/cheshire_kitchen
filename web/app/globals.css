@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand navy — placeholder, swap for the exact swatch off the shop signage. */
+  --color-navy: #0a1f44;
+  --color-navy-600: #081936;
+
+  /* Inline text links use a lighter, distinct blue — never the button navy. */
+  --color-link: #1d4ed8;
+  --color-link-600: #1741b8;
+
+  /* Alternating section surfaces — no borders/dividers between sections. */
+  --color-surface: #ffffff;
+  --color-surface-alt: #f5f5f7;
+
+  --color-ink: #1d1d1f;
+  --color-ink-muted: #6e6e73;
+
+  --radius-card: 28px;
+  --radius-pill: 9999px;
+
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  --tracking-display: -0.03em;
+  --tracking-body: -0.022em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-ink antialiased;
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: var(--tracking-body);
+    line-height: 1.47;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-ink font-semibold;
+    letter-spacing: var(--tracking-display);
+    line-height: 1.05;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 6rem);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  a {
+    color: var(--color-link);
+  }
+
+  a:hover {
+    color: var(--color-link-600);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-navy);
+    outline-offset: 3px;
+  }
+
+  /* Navy surfaces (navbar, CTA banners) need a light outline for visible
+     keyboard focus — a navy outline on navy is invisible (WCAG 2.4.11/2.4.7). */
+  header :focus-visible,
+  .bg-navy :focus-visible {
+    outline-color: white;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-6 md:px-10;
+  }
+
+  .section-surface {
+    @apply bg-surface;
+  }
+
+  .section-surface-alt {
+    @apply bg-surface-alt;
+  }
+
+  .card {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+
+  .eyebrow {
+    color: var(--color-navy);
+    @apply text-sm font-medium tracking-wide uppercase;
+  }
+
+  .btn-pill,
+  .btn-primary,
+  .btn-outline {
+    border-radius: var(--radius-pill);
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-medium no-underline transition-colors duration-150;
+  }
+
+  .btn-primary {
+    @apply text-white;
+    background-color: var(--color-navy);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-navy-600);
+  }
+
+  .btn-outline {
+    @apply border;
+    border-color: var(--color-navy);
+    color: var(--color-navy);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-navy);
+    color: white;
+  }
+
+  .tabular-nums {
+    font-feature-settings: "tnum";
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:text-ink focus:px-4 focus:py-2 focus:rounded-full focus:shadow-lg;
+  }
+}
