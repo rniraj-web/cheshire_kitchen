@@ -17,9 +17,9 @@ export default function SiteChrome({ children }) {
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={pathname}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
+            initial={{ y: 12 }}
+            animate={{ y: 0 }}
+            exit={{ y: -12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
           >
             {children}

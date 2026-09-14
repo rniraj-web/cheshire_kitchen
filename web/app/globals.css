@@ -10,6 +10,12 @@
      footer, the free-measure banner) — never for text or borders. */
   --color-navy: #0a1f44;
   --color-navy-600: #081936;
+  --color-navy-light: #2a4a80;
+
+  /* Warm accent — used sparingly for gradient highlights, echoing the warmth
+     of real kitchen photography rather than another cold blue. */
+  --color-ember: #c8703f;
+  --color-ember-light: #e0a06a;
 
   /* Accent blue — inline links, eyebrows, outline buttons, focus rings.
      Distinct from navy so it can be tuned for contrast independently
@@ -19,37 +25,50 @@
 
   /* Alternating section surfaces — no borders/dividers between sections. */
   --color-surface: #ffffff;
-  --color-surface-alt: #f5f5f7;
+  --color-surface-alt: #f6f5f2;
   /* A card/input surface that sits ON TOP of a section surface. */
   --color-surface-raised: #ffffff;
 
-  --color-ink: #1d1d1f;
-  --color-ink-muted: #6e6e73;
-  --color-hairline: rgba(0, 0, 0, 0.08);
+  --color-ink: #17181c;
+  --color-ink-muted: #6b6d76;
+  --color-hairline: rgba(20, 20, 30, 0.08);
 
   --radius-card: 28px;
   --radius-pill: 9999px;
 
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), var(--font-sans);
 
   --tracking-display: -0.03em;
-  --tracking-body: -0.022em;
+  --tracking-body: -0.011em;
+
+  --shadow-soft: 0 1px 2px rgba(20, 20, 30, 0.04), 0 20px 40px -16px rgba(20, 20, 30, 0.14);
+  --shadow-lifted: 0 4px 8px rgba(20, 20, 30, 0.06), 0 32px 64px -20px rgba(20, 20, 30, 0.22);
+  --shadow-navy: 0 12px 32px -8px rgba(10, 31, 68, 0.45);
 }
 
 .dark {
-  --color-navy: #14336a;
-  --color-navy-600: #1d4690;
+  --color-navy: #2a4d8f;
+  --color-navy-600: #3a5fab;
+  --color-navy-light: #5b82c9;
+
+  --color-ember: #e0a06a;
+  --color-ember-light: #f0c396;
 
   --color-link: #6ea8fe;
   --color-link-600: #93c5fd;
 
-  --color-surface: #050505;
-  --color-surface-alt: #161618;
-  --color-surface-raised: #1c1c1e;
+  --color-surface: #0a0a0c;
+  --color-surface-alt: #151517;
+  --color-surface-raised: #1c1c1f;
 
-  --color-ink: #f5f5f7;
-  --color-ink-muted: #98989d;
-  --color-hairline: rgba(255, 255, 255, 0.12);
+  --color-ink: #f3f3f4;
+  --color-ink-muted: #9a9aa2;
+  --color-hairline: rgba(255, 255, 255, 0.1);
+
+  --shadow-soft: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 20px 40px -16px rgba(0, 0, 0, 0.7);
+  --shadow-lifted: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 32px 64px -20px rgba(0, 0, 0, 0.8);
+  --shadow-navy: 0 12px 40px -8px rgba(42, 77, 143, 0.55);
 }
 
 @layer base {
@@ -63,7 +82,7 @@
     font-size: 17px;
     font-weight: 400;
     letter-spacing: var(--tracking-body);
-    line-height: 1.47;
+    line-height: 1.5;
   }
 
   h1,
@@ -71,16 +90,17 @@
   h3,
   h4 {
     @apply text-ink font-semibold;
+    font-family: var(--font-display);
     letter-spacing: var(--tracking-display);
     line-height: 1.05;
   }
 
   h1 {
-    font-size: clamp(2.5rem, 6vw, 6rem);
+    font-size: clamp(2.75rem, 7vw, 6.5rem);
   }
 
   h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.1rem, 4.2vw, 3.2rem);
   }
 
   a {
@@ -113,6 +133,21 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+
+    /* The blanket 0.01ms override above would make the marquee flash through
+       its whole loop instantly; freeze it instead. */
+    .marquee-track {
+      animation-play-state: paused !important;
+    }
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -132,6 +167,14 @@
   .card {
     border-radius: var(--radius-card);
     overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+  }
+
+  .card-flat {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: none;
   }
 
   .eyebrow {
@@ -143,16 +186,18 @@
   .btn-primary,
   .btn-outline {
     border-radius: var(--radius-pill);
-    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-medium no-underline transition-colors duration-150;
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-medium no-underline transition-all duration-200;
   }
 
   .btn-primary {
     @apply text-white;
     background-color: var(--color-navy);
+    box-shadow: var(--shadow-navy);
   }
 
   .btn-primary:hover {
     background-color: var(--color-navy-600);
+    box-shadow: 0 16px 40px -8px rgba(10, 31, 68, 0.55);
   }
 
   .btn-outline {
@@ -171,5 +216,54 @@
 
   .skip-link {
     @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-surface-raised focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg;
+  }
+
+  /* Gradient headline accent — clip a warm navy→ember gradient onto text. */
+  .text-gradient {
+    background-image: linear-gradient(100deg, var(--color-navy) 0%, var(--color-navy-light) 45%, var(--color-ember) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .dark .text-gradient {
+    background-image: linear-gradient(100deg, var(--color-link) 0%, var(--color-navy-light) 55%, var(--color-ember-light) 100%);
+  }
+
+  .marquee-track {
+    animation: marquee 32s linear infinite;
+  }
+
+  .spotlight-card {
+    --spot-x: 50%;
+    --spot-y: 50%;
+    position: relative;
+  }
+
+  .spotlight-card-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+      circle at var(--spot-x) var(--spot-y),
+      color-mix(in srgb, var(--color-link) 20%, transparent),
+      transparent 60%
+    );
+    z-index: 2;
+  }
+
+  .spotlight-card:hover .spotlight-card-glow {
+    opacity: 1;
+  }
+
+  /* Mesh/gradient backdrop for the hero — layered radial glows. */
+  .hero-mesh {
+    background-image:
+      radial-gradient(ellipse 60% 50% at 15% 10%, color-mix(in srgb, var(--color-navy) 18%, transparent) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 45% at 90% 15%, color-mix(in srgb, var(--color-ember) 16%, transparent) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 60% at 50% 100%, color-mix(in srgb, var(--color-navy) 10%, transparent) 0%, transparent 65%);
   }
 }

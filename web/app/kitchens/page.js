@@ -15,14 +15,14 @@ export default async function KitchensPage() {
   return (
     <section className="section-surface pt-14 pb-20 md:pt-20">
       <div className="container-wide">
-        <Reveal>
+        <Reveal fade={false}>
           <SectionHeading
             eyebrow="Kitchens"
             title="Four countries of kitchen craftsmanship"
             description="From precision German engineering to Italian design flair, every range is shown in full in our showroom — browse a taste of each below."
           />
         </Reveal>
-        <Reveal delay={0.1} className="mt-10">
+        <Reveal delay={0.1} className="mt-10" fade={false}>
           <RangeAccordion ranges={ranges} typeLabel="kitchen" />
         </Reveal>
       </div>

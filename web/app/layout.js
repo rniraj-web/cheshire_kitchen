@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/SiteChrome";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -10,6 +10,17 @@ import { BUSINESS, SITE_NAME, SITE_URL } from "@/lib/config";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+// Static weights only (no variable axes) — headings only ever use 600/700,
+// and the full variable-axis file (opsz/SOFT/WONK) was ~5x the payload for
+// design flexibility this site never uses, which was the actual cause of a
+// slow-network LCP regression.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  weight: ["600", "700"],
   display: "swap",
 });
 
@@ -54,7 +65,7 @@ function LocalBusinessJsonLd() {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${fraunces.variable} h-full`} suppressHydrationWarning>
       <body className="flex min-h-full flex-col">
         <ThemeProvider>
           <MotionProvider>

@@ -15,7 +15,7 @@ export default function ShowroomPage() {
     <>
       <section className="section-surface pt-14 pb-16 md:pt-20">
         <div className="container-wide grid gap-10 md:grid-cols-2 md:items-center">
-          <Reveal>
+          <Reveal fade={false}>
             <p className="eyebrow mb-5">Showroom</p>
             <h1 className="text-left">Come and see the finishes in person.</h1>
             <p className="mt-6 max-w-md text-left text-base leading-relaxed text-ink-muted">
@@ -31,7 +31,7 @@ export default function ShowroomPage() {
               </a>
             </div>
           </Reveal>
-          <Reveal delay={0.15}>
+          <Reveal delay={0.15} fade={false}>
             <ProductImage ratio="4/3" fallbackLabel="Showroom shopfront, Hazel Grove" />
           </Reveal>
         </div>

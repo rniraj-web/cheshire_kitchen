@@ -34,7 +34,7 @@ export default function AboutUsPage() {
     <>
       <section className="section-surface pt-14 pb-16 md:pt-20">
         <div className="container-wide grid gap-10 md:grid-cols-2 md:items-center">
-          <Reveal>
+          <Reveal fade={false}>
             <p className="eyebrow mb-5">Why Cheshire Kitchens & Bedrooms</p>
             <h1 className="text-left">Celebrating {YEARS_TRADING} years of excellence</h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-ink-muted">
@@ -43,7 +43,7 @@ export default function AboutUsPage() {
               forward to the future.
             </p>
           </Reveal>
-          <Reveal delay={0.15}>
+          <Reveal delay={0.15} fade={false}>
             <ProductImage ratio="4/3" fallbackLabel="Our showroom, Hazel Grove" />
           </Reveal>
         </div>

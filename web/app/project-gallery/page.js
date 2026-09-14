@@ -2,6 +2,7 @@ import { getGalleryProjects, safe } from "@/lib/api";
 import ProductImage from "@/components/ProductImage";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/motion/Reveal";
+import SpotlightCard from "@/components/motion/SpotlightCard";
 
 export const metadata = {
   title: "Project Gallery",
@@ -14,7 +15,7 @@ export default async function ProjectGalleryPage() {
   return (
     <section className="section-surface pt-14 pb-20 md:pt-20">
       <div className="container-wide">
-        <Reveal>
+        <Reveal fade={false}>
           <SectionHeading
             eyebrow="Project Gallery"
             title="Completed installations from around Cheshire"
@@ -24,15 +25,19 @@ export default async function ProjectGalleryPage() {
         <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {projects.length > 0 ? (
             projects.map((project, idx) => (
-              <Reveal key={project._id} as="article" delay={(idx % 3) * 0.1}>
-                <ProductImage image={project.coverImage} ratio="4/3" fallbackLabel={project.title} />
-                <p className="mt-4 text-xs font-medium uppercase tracking-wide text-navy">
-                  {project.category}
-                </p>
-                <h3 className="mt-1 text-lg font-medium text-ink">{project.title}</h3>
-                <p className="mt-2 text-left text-sm leading-relaxed text-ink-muted">
-                  {project.description}
-                </p>
+              <Reveal key={project._id} delay={(idx % 3) * 0.1}>
+                <SpotlightCard as="article" className="card block h-full">
+                  <ProductImage image={project.coverImage} ratio="4/3" fallbackLabel={project.title} className="card-flat" />
+                  <div className="p-5">
+                    <p className="text-xs font-medium tracking-wide text-link uppercase">
+                      {project.category}
+                    </p>
+                    <h3 className="mt-1 text-lg font-medium text-ink">{project.title}</h3>
+                    <p className="mt-2 text-left text-sm leading-relaxed text-ink-muted">
+                      {project.description}
+                    </p>
+                  </div>
+                </SpotlightCard>
               </Reveal>
             ))
           ) : (
