@@ -1,6 +1,7 @@
 import { getRanges, safe } from "@/lib/api";
 import RangeAccordion from "@/components/RangeAccordion";
 import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/motion/Reveal";
 
 export const metadata = {
   title: "Kitchens",
@@ -14,14 +15,16 @@ export default async function KitchensPage() {
   return (
     <section className="section-surface pt-14 pb-20 md:pt-20">
       <div className="container-wide">
-        <SectionHeading
-          eyebrow="Kitchens"
-          title="Four countries of kitchen craftsmanship"
-          description="From precision German engineering to Italian design flair, every range is shown in full in our showroom — browse a taste of each below."
-        />
-        <div className="mt-10">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Kitchens"
+            title="Four countries of kitchen craftsmanship"
+            description="From precision German engineering to Italian design flair, every range is shown in full in our showroom — browse a taste of each below."
+          />
+        </Reveal>
+        <Reveal delay={0.1} className="mt-10">
           <RangeAccordion ranges={ranges} typeLabel="kitchen" />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -69,7 +69,7 @@ function RangesAdmin({ token }) {
           {ranges.map((range) => (
             <li
               key={range._id}
-              className="flex items-center justify-between gap-4 rounded-2xl border border-black/10 p-4"
+              className="flex items-center justify-between gap-4 rounded-2xl border border-hairline p-4"
             >
               <div>
                 <p className="text-sm font-medium text-ink">
@@ -81,7 +81,7 @@ function RangesAdmin({ token }) {
                 <button type="button" onClick={() => startEdit(range)}>
                   Edit
                 </button>
-                <button type="button" onClick={() => handleDelete(range._id)} className="text-red-700">
+                <button type="button" onClick={() => handleDelete(range._id)} className="text-red-700 dark:text-red-400">
                   Delete
                 </button>
               </div>
@@ -102,7 +102,7 @@ function RangesAdmin({ token }) {
               id="type"
               value={form.type}
               onChange={(e) => setForm((f) => ({ ...f, type: e.target.value }))}
-              className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+              className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
             >
               <option value="kitchen">Kitchen</option>
               <option value="bedroom">Bedroom</option>
@@ -117,7 +117,7 @@ function RangesAdmin({ token }) {
               type="number"
               value={form.order}
               onChange={(e) => setForm((f) => ({ ...f, order: Number(e.target.value) }))}
-              className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+              className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
             />
           </div>
         </div>
@@ -130,7 +130,7 @@ function RangesAdmin({ token }) {
             required
             value={form.brand}
             onChange={(e) => setForm((f) => ({ ...f, brand: e.target.value }))}
-            className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+            className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
           />
         </div>
         <div>
@@ -142,7 +142,7 @@ function RangesAdmin({ token }) {
             required
             value={form.origin}
             onChange={(e) => setForm((f) => ({ ...f, origin: e.target.value }))}
-            className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+            className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
           />
         </div>
         <div>
@@ -155,7 +155,7 @@ function RangesAdmin({ token }) {
             rows={4}
             value={form.description}
             onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-            className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+            className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
           />
         </div>
         <div>
@@ -169,7 +169,7 @@ function RangesAdmin({ token }) {
           </div>
         </div>
         {error && (
-          <p role="alert" className="text-sm text-red-700">
+          <p role="alert" className="text-sm text-red-700 dark:text-red-400">
             {error}
           </p>
         )}

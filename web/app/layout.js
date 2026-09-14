@@ -3,6 +3,8 @@ import "./globals.css";
 import SiteChrome from "@/components/SiteChrome";
 import ScrollToTop from "@/components/ScrollToTop";
 import SkipLink from "@/components/SkipLink";
+import ThemeProvider from "@/components/ThemeProvider";
+import MotionProvider from "@/components/MotionProvider";
 import { BUSINESS, SITE_NAME, SITE_URL } from "@/lib/config";
 
 const inter = Inter({
@@ -52,12 +54,16 @@ function LocalBusinessJsonLd() {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
+    <html lang="en" className={`${inter.variable} h-full`} suppressHydrationWarning>
       <body className="flex min-h-full flex-col">
-        <LocalBusinessJsonLd />
-        <SkipLink />
-        <ScrollToTop />
-        <SiteChrome>{children}</SiteChrome>
+        <ThemeProvider>
+          <MotionProvider>
+            <LocalBusinessJsonLd />
+            <SkipLink />
+            <ScrollToTop />
+            <SiteChrome>{children}</SiteChrome>
+          </MotionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -93,7 +93,7 @@ function BlogAdmin({ token }) {
           {posts.map((post) => (
             <li
               key={post._id}
-              className="flex items-center justify-between gap-4 rounded-2xl border border-black/10 p-4"
+              className="flex items-center justify-between gap-4 rounded-2xl border border-hairline p-4"
             >
               <div>
                 <p className="text-sm font-medium text-ink">{post.title}</p>
@@ -103,7 +103,7 @@ function BlogAdmin({ token }) {
                 <button type="button" onClick={() => startEdit(post)}>
                   Edit
                 </button>
-                <button type="button" onClick={() => handleDelete(post._id)} className="text-red-700">
+                <button type="button" onClick={() => handleDelete(post._id)} className="text-red-700 dark:text-red-400">
                   Delete
                 </button>
               </div>
@@ -124,7 +124,7 @@ function BlogAdmin({ token }) {
             required
             value={form.title}
             onChange={(e) => handleTitleChange(e.target.value)}
-            className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+            className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
           />
         </div>
         <div>
@@ -139,7 +139,7 @@ function BlogAdmin({ token }) {
               setSlugTouched(true);
               setForm((f) => ({ ...f, slug: e.target.value }));
             }}
-            className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+            className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
           />
         </div>
         <div>
@@ -152,7 +152,7 @@ function BlogAdmin({ token }) {
             rows={2}
             value={form.excerpt}
             onChange={(e) => setForm((f) => ({ ...f, excerpt: e.target.value }))}
-            className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+            className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
           />
         </div>
         <div>
@@ -175,11 +175,11 @@ function BlogAdmin({ token }) {
             rows={10}
             value={form.bodyMarkdown}
             onChange={(e) => setForm((f) => ({ ...f, bodyMarkdown: e.target.value }))}
-            className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm font-mono"
+            className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm font-mono"
           />
         </div>
         {error && (
-          <p role="alert" className="text-sm text-red-700">
+          <p role="alert" className="text-sm text-red-700 dark:text-red-400">
             {error}
           </p>
         )}

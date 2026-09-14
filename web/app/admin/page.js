@@ -19,7 +19,7 @@ export default function AdminDashboardPage() {
             <Link
               key={section.href}
               href={section.href}
-              className="card block border border-black/5 bg-white p-6 no-underline"
+              className="card block border border-hairline bg-surface-raised p-6 no-underline"
             >
               <h2 className="text-lg">{section.label}</h2>
               <p className="mt-2 text-sm text-ink-muted">{section.description}</p>

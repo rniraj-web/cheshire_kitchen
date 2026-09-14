@@ -20,7 +20,7 @@ function EnquiriesAdmin({ token }) {
         <div className="mt-6 overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-black/10 text-ink-muted">
+              <tr className="border-b border-hairline text-ink-muted">
                 <th className="py-2 pr-4">Date</th>
                 <th className="py-2 pr-4">Name</th>
                 <th className="py-2 pr-4">Email</th>
@@ -31,7 +31,7 @@ function EnquiriesAdmin({ token }) {
             </thead>
             <tbody>
               {enquiries.map((enquiry) => (
-                <tr key={enquiry._id} className="border-b border-black/5 align-top">
+                <tr key={enquiry._id} className="border-b border-hairline align-top">
                   <td className="py-3 pr-4 whitespace-nowrap tabular-nums">
                     {new Date(enquiry.createdAt).toLocaleDateString("en-GB")}
                   </td>

@@ -1,5 +1,6 @@
 import ProductImage from "@/components/ProductImage";
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/motion/Reveal";
 import { BUSINESS, whatsappHref } from "@/lib/config";
 
 export const metadata = {
@@ -14,7 +15,7 @@ export default function ShowroomPage() {
     <>
       <section className="section-surface pt-14 pb-16 md:pt-20">
         <div className="container-wide grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
+          <Reveal>
             <p className="eyebrow mb-5">Showroom</p>
             <h1 className="text-left">Come and see the finishes in person.</h1>
             <p className="mt-6 max-w-md text-left text-base leading-relaxed text-ink-muted">
@@ -29,14 +30,16 @@ export default function ShowroomPage() {
                 Message on WhatsApp
               </a>
             </div>
-          </div>
-          <ProductImage ratio="4/3" fallbackLabel="Showroom shopfront, Hazel Grove" />
+          </Reveal>
+          <Reveal delay={0.15}>
+            <ProductImage ratio="4/3" fallbackLabel="Showroom shopfront, Hazel Grove" />
+          </Reveal>
         </div>
       </section>
 
       <section className="section-surface-alt py-16 md:py-20">
         <div className="container-wide grid gap-12 lg:grid-cols-[1fr_1.1fr]">
-          <div className="space-y-10">
+          <Reveal as="div" className="space-y-10">
             <div>
               <h2 className="text-xl">Address</h2>
               <p className="mt-2 text-left text-ink-muted">
@@ -57,9 +60,9 @@ export default function ShowroomPage() {
                 ))}
               </dl>
             </div>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delay={0.1}>
             <h2 className="text-xl">Send us an enquiry</h2>
             <p className="mt-2 text-left text-sm text-ink-muted">
               Tell us a little about your project and a designer will get back to you within one
@@ -68,10 +71,10 @@ export default function ShowroomPage() {
             <div className="mt-6">
               <ContactForm />
             </div>
-          </div>
+          </Reveal>
         </div>
 
-        <div className="container-wide mt-12">
+        <Reveal as="div" className="container-wide mt-12">
           <div className="card aspect-[16/9] w-full">
             <iframe
               title="Cheshire Kitchens showroom location"
@@ -91,7 +94,7 @@ export default function ShowroomPage() {
           >
             Open in Google Maps →
           </a>
-        </div>
+        </Reveal>
       </section>
     </>
   );

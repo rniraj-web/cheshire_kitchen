@@ -41,7 +41,7 @@ export default function SingleImageEditor({ token, image, onChange }) {
           placeholder="Alt text"
           value={image?.alt || ""}
           onChange={(e) => onChange({ ...image, alt: e.target.value })}
-          className="flex-1 rounded-lg border border-black/10 px-3 py-2 text-sm"
+          className="flex-1 rounded-lg border border-hairline px-3 py-2 text-sm"
         />
         <label className="text-sm">
           <span className="btn-outline cursor-pointer">{uploading ? "Uploading…" : "Upload"}</span>
@@ -49,7 +49,7 @@ export default function SingleImageEditor({ token, image, onChange }) {
         </label>
       </div>
       {error && (
-        <p role="alert" className="mt-2 text-sm text-red-700">
+        <p role="alert" className="mt-2 text-sm text-red-700 dark:text-red-400">
           {error}
         </p>
       )}

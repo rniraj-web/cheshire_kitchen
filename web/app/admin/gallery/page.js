@@ -81,7 +81,7 @@ function GalleryAdmin({ token }) {
           {projects.map((project) => (
             <li
               key={project._id}
-              className="flex items-center justify-between gap-4 rounded-2xl border border-black/10 p-4"
+              className="flex items-center justify-between gap-4 rounded-2xl border border-hairline p-4"
             >
               <div>
                 <p className="text-sm font-medium text-ink">{project.title}</p>
@@ -91,7 +91,7 @@ function GalleryAdmin({ token }) {
                 <button type="button" onClick={() => startEdit(project)}>
                   Edit
                 </button>
-                <button type="button" onClick={() => handleDelete(project._id)} className="text-red-700">
+                <button type="button" onClick={() => handleDelete(project._id)} className="text-red-700 dark:text-red-400">
                   Delete
                 </button>
               </div>
@@ -113,7 +113,7 @@ function GalleryAdmin({ token }) {
               required
               value={form.title}
               onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
-              className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+              className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
             />
           </div>
           <div>
@@ -124,7 +124,7 @@ function GalleryAdmin({ token }) {
               id="category"
               value={form.category}
               onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}
-              className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+              className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
             >
               <option value="kitchen">Kitchen</option>
               <option value="bedroom">Bedroom</option>
@@ -141,7 +141,7 @@ function GalleryAdmin({ token }) {
             rows={3}
             value={form.description}
             onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-            className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm"
+            className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm"
           />
         </div>
         <div>
@@ -165,7 +165,7 @@ function GalleryAdmin({ token }) {
           </div>
         </div>
         {error && (
-          <p role="alert" className="text-sm text-red-700">
+          <p role="alert" className="text-sm text-red-700 dark:text-red-400">
             {error}
           </p>
         )}

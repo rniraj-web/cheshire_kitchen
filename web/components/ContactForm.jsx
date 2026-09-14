@@ -33,7 +33,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="card border border-black/5 bg-white p-6" role="status" aria-live="polite">
+      <div className="card border border-hairline bg-surface-raised p-6" role="status" aria-live="polite">
         <p className="text-lg font-medium text-ink">Thank you — your enquiry is on its way.</p>
         <p className="mt-2 text-sm text-ink-muted">
           A designer will get back to you within one working day. For anything urgent, call us or
@@ -61,7 +61,7 @@ export default function ContactForm() {
             autoComplete="name"
             value={form.name}
             onChange={handleChange}
-            className="mt-1 w-full rounded-2xl border border-black/10 bg-white px-4 py-2.5 text-sm text-ink focus:border-navy"
+            className="mt-1 w-full rounded-2xl border border-hairline bg-surface-raised px-4 py-2.5 text-sm text-ink focus:border-link"
           />
         </div>
         <div>
@@ -75,7 +75,7 @@ export default function ContactForm() {
             autoComplete="tel"
             value={form.phone}
             onChange={handleChange}
-            className="mt-1 w-full rounded-2xl border border-black/10 bg-white px-4 py-2.5 text-sm text-ink focus:border-navy"
+            className="mt-1 w-full rounded-2xl border border-hairline bg-surface-raised px-4 py-2.5 text-sm text-ink focus:border-link"
           />
         </div>
       </div>
@@ -92,7 +92,7 @@ export default function ContactForm() {
           autoComplete="email"
           value={form.email}
           onChange={handleChange}
-          className="mt-1 w-full rounded-2xl border border-black/10 bg-white px-4 py-2.5 text-sm text-ink focus:border-navy"
+          className="mt-1 w-full rounded-2xl border border-hairline bg-surface-raised px-4 py-2.5 text-sm text-ink focus:border-link"
         />
       </div>
 
@@ -107,12 +107,12 @@ export default function ContactForm() {
           required
           value={form.message}
           onChange={handleChange}
-          className="mt-1 w-full rounded-2xl border border-black/10 bg-white px-4 py-2.5 text-sm text-ink focus:border-navy"
+          className="mt-1 w-full rounded-2xl border border-hairline bg-surface-raised px-4 py-2.5 text-sm text-ink focus:border-link"
         />
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-red-700" role="alert">
+        <p className="text-sm text-red-700 dark:text-red-400" role="alert">
           {errorMsg}
         </p>
       )}

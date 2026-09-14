@@ -15,13 +15,13 @@ export default function ProductImage({ image, ratio = "4/3", fallbackLabel, clas
   }
 
   return (
-    <div className={`card relative ${RATIO_CLASSES[ratio] ?? RATIO_CLASSES["4/3"]} ${className}`}>
+    <div className={`card relative overflow-hidden ${RATIO_CLASSES[ratio] ?? RATIO_CLASSES["4/3"]} ${className}`}>
       <Image
         src={resolveImageUrl(image.url)}
         alt={image.alt}
         fill
         sizes="(min-width: 1024px) 50vw, 100vw"
-        className="object-cover"
+        className="object-cover transition-transform duration-500 ease-out hover:scale-105"
       />
     </div>
   );

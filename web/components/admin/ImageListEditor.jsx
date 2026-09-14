@@ -36,7 +36,7 @@ export default function ImageListEditor({ token, images, onChange }) {
     <div>
       <div className="space-y-3">
         {images.map((img, idx) => (
-          <div key={idx} className="flex items-center gap-3 rounded-2xl border border-black/10 p-3">
+          <div key={idx} className="flex items-center gap-3 rounded-2xl border border-hairline p-3">
             <Image
               src={resolveImageUrl(img.url)}
               alt=""
@@ -49,9 +49,9 @@ export default function ImageListEditor({ token, images, onChange }) {
               placeholder="Alt text (required)"
               value={img.alt}
               onChange={(e) => updateAlt(idx, e.target.value)}
-              className="flex-1 rounded-lg border border-black/10 px-3 py-2 text-sm"
+              className="flex-1 rounded-lg border border-hairline px-3 py-2 text-sm"
             />
-            <button type="button" onClick={() => removeImage(idx)} className="text-sm text-red-700">
+            <button type="button" onClick={() => removeImage(idx)} className="text-sm text-red-700 dark:text-red-400">
               Remove
             </button>
           </div>
@@ -62,7 +62,7 @@ export default function ImageListEditor({ token, images, onChange }) {
         <input type="file" accept="image/*" onChange={handleUpload} className="hidden" disabled={uploading} />
       </label>
       {error && (
-        <p role="alert" className="mt-2 text-sm text-red-700">
+        <p role="alert" className="mt-2 text-sm text-red-700 dark:text-red-400">
           {error}
         </p>
       )}

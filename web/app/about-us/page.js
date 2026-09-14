@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductImage from "@/components/ProductImage";
 import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/motion/Reveal";
 import { YEARS_TRADING } from "@/lib/config";
 
 export const metadata = {
@@ -33,7 +34,7 @@ export default function AboutUsPage() {
     <>
       <section className="section-surface pt-14 pb-16 md:pt-20">
         <div className="container-wide grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
+          <Reveal>
             <p className="eyebrow mb-5">Why Cheshire Kitchens & Bedrooms</p>
             <h1 className="text-left">Celebrating {YEARS_TRADING} years of excellence</h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-ink-muted">
@@ -41,13 +42,15 @@ export default function AboutUsPage() {
               success. This year, we&rsquo;re celebrating five decades of experience and looking
               forward to the future.
             </p>
-          </div>
-          <ProductImage ratio="4/3" fallbackLabel="Our showroom, Hazel Grove" />
+          </Reveal>
+          <Reveal delay={0.15}>
+            <ProductImage ratio="4/3" fallbackLabel="Our showroom, Hazel Grove" />
+          </Reveal>
         </div>
       </section>
 
       <section className="section-surface-alt py-16 md:py-20">
-        <div className="container-wide max-w-3xl space-y-6 text-left leading-relaxed text-ink">
+        <Reveal as="div" className="container-wide max-w-3xl space-y-6 text-left leading-relaxed text-ink">
           <p>
             Cheshire Kitchens and Bedrooms was established by Shirley Sharp in 1976. After an
             extremely good start to the business, she was soon joined by her husband Alan and son
@@ -79,18 +82,20 @@ export default function AboutUsPage() {
           <Link href="/showroom" className="btn-primary mt-4 inline-flex">
             Visit the showroom
           </Link>
-        </div>
+        </Reveal>
       </section>
 
       <section className="section-surface py-16 md:py-20">
         <div className="container-wide">
-          <SectionHeading eyebrow="How we work" title="Why Cheshire Kitchens?" />
+          <Reveal>
+            <SectionHeading eyebrow="How we work" title="Why Cheshire Kitchens?" />
+          </Reveal>
           <div className="mt-10 grid gap-10 md:grid-cols-2">
-            {VALUES.map((value) => (
-              <div key={value.title}>
+            {VALUES.map((value, idx) => (
+              <Reveal key={value.title} delay={idx * 0.08}>
                 <h3 className="text-lg font-medium text-ink">{value.title}</h3>
                 <p className="mt-2 text-left text-sm leading-relaxed text-ink-muted">{value.body}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

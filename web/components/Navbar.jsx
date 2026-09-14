@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion } from "motion/react";
+import ThemeToggle from "./ThemeToggle";
 
 const LINKS = [
   { href: "/about-us", label: "About Us" },
@@ -25,7 +27,7 @@ export default function Navbar() {
           <Image src="/logo.png" alt="Cheshire Kitchens & Bedrooms" width={170} height={65} priority />
         </Link>
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-2 lg:gap-4">
           <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
             {LINKS.map((link) => {
               const isActive = pathname === link.href;
@@ -44,48 +46,72 @@ export default function Navbar() {
             })}
           </nav>
 
+          <ThemeToggle tone="navbar" />
+
           <Link href="/showroom" className="btn-pill hidden bg-white text-navy hover:bg-white/90 lg:inline-flex">
             Enquire today
           </Link>
 
           <button
             type="button"
-            className="flex flex-col gap-1.5 lg:hidden"
+            className="flex flex-col gap-1.5 p-2 lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
           >
-            <span className={`block h-px w-6 bg-white transition-transform ${open ? "translate-y-[7px] rotate-45" : ""}`} />
-            <span className={`block h-px w-6 bg-white transition-opacity ${open ? "opacity-0" : ""}`} />
-            <span className={`block h-px w-6 bg-white transition-transform ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
+            <motion.span
+              className="block h-px w-6 bg-white"
+              animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              className="block h-px w-6 bg-white"
+              animate={open ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.15 }}
+            />
+            <motion.span
+              className="block h-px w-6 bg-white"
+              animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.2 }}
+            />
           </button>
         </div>
       </div>
 
-      {open && (
-        <nav id="mobile-nav" aria-label="Primary" className="bg-navy lg:hidden">
-          <div className="container-wide flex flex-col py-4">
-            {LINKS.map((link) => (
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            id="mobile-nav"
+            aria-label="Primary"
+            className="overflow-hidden bg-navy lg:hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+          >
+            <div className="container-wide flex flex-col py-4">
+              {LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`py-3 text-base no-underline ${pathname === link.href ? "font-medium text-white" : "text-white/70"}`}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
-                key={link.href}
-                href={link.href}
-                className={`py-3 text-base no-underline ${pathname === link.href ? "font-medium text-white" : "text-white/70"}`}
+                href="/showroom"
+                className="btn-pill mt-4 w-full bg-white text-navy hover:bg-white/90"
                 onClick={() => setOpen(false)}
               >
-                {link.label}
+                Enquire today
               </Link>
-            ))}
-            <Link
-              href="/showroom"
-              className="btn-pill mt-4 w-full bg-white text-navy hover:bg-white/90"
-              onClick={() => setOpen(false)}
-            >
-              Enquire today
-            </Link>
-          </div>
-        </nav>
-      )}
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

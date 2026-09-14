@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
             autoComplete="username"
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-            className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm focus:border-navy"
+            className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm focus:border-link"
           />
         </div>
         <div>
@@ -56,11 +56,11 @@ export default function AdminLoginPage() {
             autoComplete="current-password"
             value={form.password}
             onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
-            className="mt-1 w-full rounded-2xl border border-black/10 px-4 py-2.5 text-sm focus:border-navy"
+            className="mt-1 w-full rounded-2xl border border-hairline px-4 py-2.5 text-sm focus:border-link"
           />
         </div>
         {error && (
-          <p role="alert" className="text-sm text-red-700">
+          <p role="alert" className="text-sm text-red-700 dark:text-red-400">
             {error}
           </p>
         )}

@@ -1,20 +1,31 @@
 @import "tailwindcss";
 
+/* next-themes toggles a "dark" class on <html> — map Tailwind's dark:
+   variant to that instead of the OS-level prefers-color-scheme default. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  /* Brand navy — placeholder, swap for the exact swatch off the shop signage. */
+  /* Brand navy — placeholder, swap for the exact swatch off the shop signage.
+     Reserved for filled CTA buttons and brand-chrome surfaces (navbar,
+     footer, the free-measure banner) — never for text or borders. */
   --color-navy: #0a1f44;
   --color-navy-600: #081936;
 
-  /* Inline text links use a lighter, distinct blue — never the button navy. */
+  /* Accent blue — inline links, eyebrows, outline buttons, focus rings.
+     Distinct from navy so it can be tuned for contrast independently
+     (this is the one that has to flip to a lighter tint in dark mode). */
   --color-link: #1d4ed8;
   --color-link-600: #1741b8;
 
   /* Alternating section surfaces — no borders/dividers between sections. */
   --color-surface: #ffffff;
   --color-surface-alt: #f5f5f7;
+  /* A card/input surface that sits ON TOP of a section surface. */
+  --color-surface-raised: #ffffff;
 
   --color-ink: #1d1d1f;
   --color-ink-muted: #6e6e73;
+  --color-hairline: rgba(0, 0, 0, 0.08);
 
   --radius-card: 28px;
   --radius-pill: 9999px;
@@ -25,13 +36,29 @@
   --tracking-body: -0.022em;
 }
 
+.dark {
+  --color-navy: #14336a;
+  --color-navy-600: #1d4690;
+
+  --color-link: #6ea8fe;
+  --color-link-600: #93c5fd;
+
+  --color-surface: #050505;
+  --color-surface-alt: #161618;
+  --color-surface-raised: #1c1c1e;
+
+  --color-ink: #f5f5f7;
+  --color-ink-muted: #98989d;
+  --color-hairline: rgba(255, 255, 255, 0.12);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-surface text-ink antialiased;
+    @apply bg-surface text-ink antialiased transition-colors duration-300;
     font-family: var(--font-sans);
     font-size: 17px;
     font-weight: 400;
@@ -65,12 +92,13 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-navy);
+    outline: 2px solid var(--color-link);
     outline-offset: 3px;
   }
 
   /* Navy surfaces (navbar, CTA banners) need a light outline for visible
-     keyboard focus — a navy outline on navy is invisible (WCAG 2.4.11/2.4.7). */
+     keyboard focus — a same-hue outline on a same-hue fill is invisible
+     (WCAG 2.4.11/2.4.7), regardless of light/dark theme. */
   header :focus-visible,
   .bg-navy :focus-visible {
     outline-color: white;
@@ -107,7 +135,7 @@
   }
 
   .eyebrow {
-    color: var(--color-navy);
+    color: var(--color-link);
     @apply text-sm font-medium tracking-wide uppercase;
   }
 
@@ -129,13 +157,12 @@
 
   .btn-outline {
     @apply border;
-    border-color: var(--color-navy);
-    color: var(--color-navy);
+    border-color: var(--color-link);
+    color: var(--color-link);
   }
 
   .btn-outline:hover {
-    background-color: var(--color-navy);
-    color: white;
+    background-color: color-mix(in srgb, var(--color-link) 12%, transparent);
   }
 
   .tabular-nums {
@@ -143,6 +170,6 @@
   }
 
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:text-ink focus:px-4 focus:py-2 focus:rounded-full focus:shadow-lg;
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-surface-raised focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg;
   }
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const LINKS = [
   { href: "/admin", label: "Dashboard" },
@@ -10,7 +11,7 @@ const LINKS = [
 
 export default function AdminNav({ onLogout }) {
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 border-b border-black/10 pb-6">
+    <div className="flex flex-wrap items-center justify-between gap-4 border-b border-hairline pb-6">
       <nav aria-label="Admin" className="flex flex-wrap gap-6 text-sm">
         {LINKS.map((link) => (
           <Link key={link.href} href={link.href} className="no-underline">
@@ -18,9 +19,12 @@ export default function AdminNav({ onLogout }) {
           </Link>
         ))}
       </nav>
-      <button type="button" onClick={onLogout} className="text-sm text-ink-muted">
-        Log out
-      </button>
+      <div className="flex items-center gap-3">
+        <ThemeToggle />
+        <button type="button" onClick={onLogout} className="text-sm text-ink-muted">
+          Log out
+        </button>
+      </div>
     </div>
   );
 }

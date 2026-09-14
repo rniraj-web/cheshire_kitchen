@@ -25,6 +25,25 @@ Inter as the loaded web fallback everywhere else. Brand navy reserved for CTAs a
 navbar/footer brand surfaces; inline links use a separate blue. See `app/globals.css` for the
 token definitions.
 
+## Theming
+
+Light/dark mode via `next-themes` (`components/ThemeProvider.jsx`), toggled with
+`components/ThemeToggle.jsx` (in the navbar and admin nav). Attribute strategy is `class` —
+Tailwind's `dark:` variant is remapped in `globals.css` (`@custom-variant dark`) to match. Most
+of the palette is theme-agnostic by construction: colors are CSS custom properties under
+`@theme` in `globals.css`, redefined once under `.dark`, so components using the `-surface`,
+`-ink`, `-navy`, `-link`, `-hairline` token utilities flip automatically — no per-component
+`dark:` classes needed except for a few hardcoded arbitrary-value gradients.
+
+## Motion
+
+Animation via `motion/react` (formerly Framer Motion): `components/motion/Reveal.jsx` is the
+scroll-reveal primitive used across the content pages; page transitions live in
+`SiteChrome.jsx`; the Kitchens/Bedrooms accordion, mobile nav, theme toggle icon, and the
+WhatsApp button all have their own small motion treatments. `components/MotionProvider.jsx`
+sets `reducedMotion="user"` globally so every motion/react animation (not just plain CSS
+transitions) collapses to instant for users with the OS-level reduce-motion preference set.
+
 ## Notable Next.js 16 gotcha
 
 `next/image` optimization against a loopback host (e.g. the local API at `localhost:4000`) is
