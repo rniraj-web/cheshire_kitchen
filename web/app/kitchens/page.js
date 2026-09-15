@@ -17,6 +17,7 @@ export default async function KitchensPage() {
       <div className="container-wide">
         <Reveal fade={false}>
           <SectionHeading
+            className="align-items-center"
             eyebrow="Kitchens"
             title="Four countries of kitchen craftsmanship"
             description="From precision German engineering to Italian design flair, every range is shown in full in our showroom - browse a taste of each below."

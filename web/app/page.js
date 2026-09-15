@@ -44,8 +44,8 @@ export default async function HomePage() {
 
       {/* 50 years */}
       <section className="section-surface-alt py-16 md:py-20">
-        <div className="container-wide grid gap-10 md:grid-cols-2 md:items-center">
-          <Reveal>
+        <div className="container-wide grid gap-10 md:grid-cols-1 md:justify-items-center md:items-center">
+          <Reveal className="items-center">
             <SectionHeading
               eyebrow="Our story"
               title="Fifty years of designing kitchens for Cheshire homes"
@@ -88,10 +88,20 @@ export default async function HomePage() {
           </Reveal>
           <div className="mt-10 grid gap-6 md:grid-cols-5">
             <Reveal delay={0.1} className="md:col-span-3">
-              <RangeTeaser href="/kitchens" label="Kitchens" ratio="4/3" image={kitchenRanges[0]?.images?.[0]} />
+              <RangeTeaser
+                href="/kitchens"
+                label="Kitchens"
+                ratio="4/3"
+                image={kitchenRanges[0]?.images?.[0]}
+              />
             </Reveal>
             <Reveal delay={0.2} className="md:col-span-2">
-              <RangeTeaser href="/bedrooms" label="Bedrooms" ratio="3/4" image={bedroomRanges[0]?.images?.[0]} />
+              <RangeTeaser
+                href="/bedrooms"
+                label="Bedrooms"
+                ratio="3/4"
+                image={bedroomRanges[0]?.images?.[0]}
+              />
             </Reveal>
           </div>
         </div>
@@ -103,25 +113,42 @@ export default async function HomePage() {
       <section className="section-surface py-16 md:py-20">
         <div className="container-wide">
           <Reveal>
-            <SectionHeading eyebrow="Inspiration" title="Ideas for your next project" />
+            <SectionHeading
+              eyebrow="Inspiration"
+              title="Ideas for your next project"
+            />
           </Reveal>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {posts.length > 0 ? (
               posts.slice(0, 3).map((post, idx) => (
                 <Reveal key={post.slug} delay={idx * 0.1}>
                   <SpotlightCard className="card block">
-                    <Link href={`/inspiration/${post.slug}`} className="block no-underline">
-                      <ProductImage image={post.coverImage} ratio="4/3" fallbackLabel={post.title} className="card-flat" />
+                    <Link
+                      href={`/inspiration/${post.slug}`}
+                      className="block no-underline"
+                    >
+                      <ProductImage
+                        image={post.coverImage}
+                        ratio="4/3"
+                        fallbackLabel={post.title}
+                        className="card-flat"
+                      />
                       <div className="p-5">
-                        <h3 className="text-lg font-medium text-ink">{post.title}</h3>
-                        <p className="mt-2 text-sm text-ink-muted">{post.excerpt}</p>
+                        <h3 className="text-lg font-medium text-ink">
+                          {post.title}
+                        </h3>
+                        <p className="mt-2 text-sm text-ink-muted">
+                          {post.excerpt}
+                        </p>
                       </div>
                     </Link>
                   </SpotlightCard>
                 </Reveal>
               ))
             ) : (
-              <p className="text-sm text-ink-muted">New articles are on their way — check back soon.</p>
+              <p className="text-sm text-ink-muted">
+                New articles are on their way — check back soon.
+              </p>
             )}
           </div>
         </div>
@@ -151,7 +178,12 @@ function RangeTeaser({ href, label, image, ratio = "4/3" }) {
   return (
     <SpotlightCard className="card block h-full">
       <Link href={href} className="block h-full no-underline">
-        <ProductImage image={image} ratio={ratio} fallbackLabel={`${label} range`} className="card-flat" />
+        <ProductImage
+          image={image}
+          ratio={ratio}
+          fallbackLabel={`${label} range`}
+          className="card-flat"
+        />
         <div className="p-5">
           <h3 className="text-lg font-medium text-ink">{label} →</h3>
         </div>

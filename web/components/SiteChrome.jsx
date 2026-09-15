@@ -8,11 +8,10 @@ import WhatsAppButton from "./WhatsAppButton";
 
 export default function SiteChrome({ children }) {
   const pathname = usePathname();
-  const isAdmin = pathname.startsWith("/admin");
 
   return (
     <>
-      {!isAdmin && <Navbar />}
+      <Navbar />
       <main id="main-content" className="flex-1">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
@@ -26,8 +25,8 @@ export default function SiteChrome({ children }) {
           </motion.div>
         </AnimatePresence>
       </main>
-      {!isAdmin && <Footer />}
-      {!isAdmin && <WhatsAppButton />}
+      <Footer />
+      <WhatsAppButton />
     </>
   );
 }
