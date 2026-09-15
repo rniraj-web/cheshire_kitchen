@@ -17,11 +17,13 @@ export default async function HomePage() {
     safe(getBlogPosts(), []),
   ]);
 
-  const heroImage = kitchenRanges[0]?.images?.[0];
+  const heroImages = [...kitchenRanges, ...bedroomRanges]
+    .map((range) => range.images?.[0])
+    .filter(Boolean);
 
   return (
     <>
-      <HomeHero heroImage={heroImage} />
+      <HomeHero heroImages={heroImages} />
 
       {/* Trust strip */}
       <div className="section-surface-alt border-t border-hairline py-8">

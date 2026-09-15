@@ -120,7 +120,8 @@
      keyboard focus — a same-hue outline on a same-hue fill is invisible
      (WCAG 2.4.11/2.4.7), regardless of light/dark theme. */
   header :focus-visible,
-  .bg-navy :focus-visible {
+  .bg-navy :focus-visible,
+  .scrim-dark :focus-visible {
     outline-color: white;
   }
 
