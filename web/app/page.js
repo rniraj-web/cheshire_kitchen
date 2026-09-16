@@ -9,12 +9,14 @@ import HomeHero from "@/components/HomeHero";
 import LogoMarquee from "@/components/LogoMarquee";
 import StatsBar from "@/components/StatsBar";
 import SpotlightCard from "@/components/motion/SpotlightCard";
+import Image from "next/image";
 
 export default async function HomePage() {
   const [kitchenRanges, bedroomRanges, posts] = await Promise.all([
     safe(getRanges("kitchen"), []),
     safe(getRanges("bedroom"), []),
     safe(getBlogPosts(), []),
+    // safe(getPartner("partner"))
   ]);
 
   const heroImages = [...kitchenRanges, ...bedroomRanges]
@@ -49,10 +51,10 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Our story"
               title="Fifty years of designing kitchens for Cheshire homes"
-              description="Founded by Shirley Sharp in 1976, the business has grown into a family-run team of designers and fitters who still measure, design and build every project themselves — nothing dropshipped, nothing outsourced."
+              description="Founded by Shirley Sharp in 1976, the business has grown into a family-run team of designers and fitters who still measure, design and build every project themselves - nothing dropshipped, nothing outsourced."
             />
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="flex justify-center">
             <Link href="/about-us" className="btn-outline">
               Read our story
             </Link>
@@ -63,27 +65,28 @@ export default async function HomePage() {
       {/* Siemens partnership */}
       <section className="section-surface py-16 md:py-20">
         <div className="container-wide grid gap-10 md:grid-cols-2 md:items-center">
-          <Reveal className="order-2 md:order-1">
-            <PlaceholderBadge />
+          <Reveal direction="left" delay={0} className="order-2 md:order-1">
+            <PartnerImage />
           </Reveal>
-          <Reveal delay={0.1} className="order-1 md:order-2">
+
+          <Reveal direction="right" delay={0.15} className="order-1 md:order-2">
             <SectionHeading
               eyebrow="Official partner"
               title="Proud Siemens appliance partner"
-              description="We're proud to partner with Siemens, fitting their kitchen appliances as standard across our ranges — precision engineering to match the cabinetry it sits in."
+              description="We're proud to partner with Siemens, fitting their kitchen appliances as standard across our ranges - precision engineering to match the cabinetry it sits in."
             />
           </Reveal>
         </div>
       </section>
 
-      {/* Ranges showcase — asymmetric bento layout */}
+      {/* Ranges showcase - asymmetric bento layout */}
       <section className="section-surface-alt py-16 md:py-20">
         <div className="container-wide">
           <Reveal>
             <SectionHeading
               eyebrow="Our ranges"
               title="Kitchens and bedrooms, from four countries of craftsmanship"
-              description="Rational, Ewe, Snaidero and Callerton for kitchens; Daval for bedrooms — each range shown in full in our showroom."
+              description="Rational, Ewe, Snaidero and Callerton for kitchens; Daval for bedrooms - each range shown in full in our showroom."
             />
           </Reveal>
           <div className="mt-10 grid gap-6 md:grid-cols-5">
@@ -147,7 +150,7 @@ export default async function HomePage() {
               ))
             ) : (
               <p className="text-sm text-ink-muted">
-                New articles are on their way — check back soon.
+                New articles are on their way - check back soon.
               </p>
             )}
           </div>
@@ -158,15 +161,18 @@ export default async function HomePage() {
       <section className="section-surface-alt py-16 md:py-20">
         <Reveal
           as="div"
-          className="container-wide flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between"
+          className="container-wide flex flex-col items-center gap-6 md:flex-col md:items-center md:justify-between"
         >
           <SectionHeading
             eyebrow="Visit us"
             title="See the finishes in person"
             description={`${BUSINESS.addressLine1}, ${BUSINESS.addressLine2}`}
           />
-          <Link href="/showroom" className="btn-primary shrink-0">
-            Plan your visit
+          <Link
+            href="/showroom"
+            className="btn-primary shrink-0 justify-center"
+          >
+            Visit the showroom
           </Link>
         </Reveal>
       </section>
@@ -192,12 +198,34 @@ function RangeTeaser({ href, label, image, ratio = "4/3" }) {
   );
 }
 
-function PlaceholderBadge() {
+// function PlaceholderBadge() {
+//   return (
+//     <div className="card flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-[#eef1f6] to-[#dde3ee] dark:from-[#1c1c1f] dark:to-[#242428]">
+//       <span className="rounded-full bg-surface-raised px-6 py-3 text-sm font-medium text-ink shadow-lifted">
+//         Siemens · Official Partner
+//       </span>
+//     </div>
+//   );
+// }
+function PartnerImage() {
   return (
-    <div className="card flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-[#eef1f6] to-[#dde3ee] dark:from-[#1c1c1f] dark:to-[#242428]">
-      <span className="rounded-full bg-surface-raised px-6 py-3 text-sm font-medium text-ink shadow-lifted">
-        Siemens · Official Partner
-      </span>
+    <div className="group w-full">
+      <Image
+        src="/images/partner/Siemens_Logo.jpg"
+        alt="Siemens Official Partner"
+        width={800}
+        height={600}
+        className="
+          w-full
+          object-contain
+          transition-all
+          duration-500
+          ease-out
+          drop-shadow-[0_8px_20px_rgba(59,130,246,0.18)]
+          group-hover:scale-[1.02]
+          group-hover:drop-shadow-[0_12px_30px_rgba(59,130,246,0.4)]
+        "
+      />
     </div>
   );
 }

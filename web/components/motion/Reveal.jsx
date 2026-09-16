@@ -2,21 +2,40 @@
 
 import { motion } from "motion/react";
 
-export default function Reveal({ children, delay = 0, y = 24, className = "", as = "div", fade = true }) {
+export default function Reveal({
+  children,
+  delay = 0,
+  y = 24,
+  className = "",
+  as = "div",
+  fade = true,
+  direction = null,
+}) {
   const Component = motion[as] ?? motion.div;
 
-  // `fade=false` for anything that can appear in the initial viewport (hero
-  // sections). Chrome's Largest Contentful Paint heuristic excludes elements
-  // with an in-progress opacity animation until it settles, so an
-  // opacity:0 initial state on above-the-fold content directly delays LCP.
-  // Below-the-fold content (the default) is safe to fade — it's outside the
-  // initial viewport and can't be an LCP candidate until scrolled to anyway.
+  const x = direction === "left" ? -100 : direction === "right" ? 100 : 0;
+
   return (
     <Component
-      initial={fade ? { opacity: 0, y } : { y }}
-      whileInView={fade ? { opacity: 1, y: 0 } : { y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
+      initial={{
+        opacity: fade ? 0 : 1,
+        x,
+        y,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        duration: 1,
+        delay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       className={className}
     >
       {children}

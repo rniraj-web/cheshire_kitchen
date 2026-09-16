@@ -13,7 +13,7 @@ const inter = Inter({
   display: "swap",
 });
 
-// Static weights only (no variable axes) — headings only ever use 600/700,
+// Static weights only (no variable axes) - headings only ever use 600/700,
 // and the full variable-axis file (opsz/SOFT/WONK) was ~5x the payload for
 // design flexibility this site never uses, which was the actual cause of a
 // slow-network LCP regression.
@@ -27,11 +27,11 @@ const fraunces = Fraunces({
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Handcrafted Kitchens & Bedrooms in Cheshire`,
-    template: `%s — ${SITE_NAME}`,
+    default: `${SITE_NAME} - Handcrafted Kitchens & Bedrooms in Cheshire`,
+    template: `%s - ${SITE_NAME}`,
   },
   description:
-    "Bespoke, handcrafted kitchens and bedrooms designed and fitted across Cheshire. Celebrating 50 years in business — visit our Hazel Grove showroom.",
+    "Bespoke, handcrafted kitchens and bedrooms designed and fitted across Cheshire. Celebrating 50 years in business - visit our Hazel Grove showroom.",
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
@@ -60,12 +60,21 @@ function LocalBusinessJsonLd() {
     })),
   };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />;
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable} h-full`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${fraunces.variable} h-full`}
+      suppressHydrationWarning
+    >
       <body className="flex min-h-full flex-col">
         <ThemeProvider>
           <MotionProvider>

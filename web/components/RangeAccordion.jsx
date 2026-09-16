@@ -10,7 +10,7 @@ export default function RangeAccordion({ ranges, typeLabel }) {
   if (ranges.length === 0) {
     return (
       <p className="text-sm text-ink-muted">
-        Ranges are being added here — check back soon, or visit the showroom to
+        Ranges are being added here - check back soon, or visit the showroom to
         see the full collection in person.
       </p>
     );

@@ -1,8 +1,7 @@
 import { getGalleryProjects, safe } from "@/lib/api";
-import ProductImage from "@/components/ProductImage";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/motion/Reveal";
-import SpotlightCard from "@/components/motion/SpotlightCard";
+import CategoryCarousel from "@/components/gallery/CategoryCarousel";
 
 export const metadata = {
   title: "Project Gallery",
@@ -11,6 +10,8 @@ export const metadata = {
 
 export default async function ProjectGalleryPage() {
   const projects = await safe(getGalleryProjects(), []);
+  const kitchenProjects = projects.filter((p) => p.category === "kitchen");
+  const bedroomProjects = projects.filter((p) => p.category === "bedroom");
 
   return (
     <section className="section-surface pt-14 pb-20 md:pt-20">
@@ -19,35 +20,43 @@ export default async function ProjectGalleryPage() {
           <SectionHeading
             eyebrow="Project Gallery"
             title="Completed installations from around Cheshire"
-            description="A selection of finished kitchens and bedrooms — every project designed, built and fitted by our own team."
+            description="A selection of finished kitchens and bedrooms — every project designed, built and fitted by our own team. Click a photo to enlarge it."
           />
         </Reveal>
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.length > 0 ? (
-            projects.map((project, idx) => (
-              <Reveal key={project._id} delay={(idx % 3) * 0.1}>
-                <SpotlightCard as="article" className="card block h-full">
-                  <ProductImage image={project.coverImage} ratio="4/3" fallbackLabel={project.title} className="card-flat" />
-                  <div className="p-5">
-                    <p className="text-xs font-medium tracking-wide text-link uppercase">
-                      {project.category}
-                    </p>
-                    <h3 className="mt-1 text-lg font-medium text-ink">{project.title}</h3>
-                    <p className="mt-2 text-left text-sm leading-relaxed text-ink-muted">
-                      {project.description}
-                    </p>
-                  </div>
-                </SpotlightCard>
-              </Reveal>
-            ))
-          ) : (
-            <p className="text-sm text-ink-muted">
-              Our project gallery is being put together — visit the showroom to see recent work in
-              the meantime.
-            </p>
-          )}
-        </div>
       </div>
+
+      {projects.length === 0 && (
+        <div className="container-wide">
+          <p className="mt-10 text-sm text-ink-muted">
+            Our project gallery is being put together — visit the showroom to see recent work in
+            the meantime.
+          </p>
+        </div>
+      )}
+
+      {kitchenProjects.length > 0 && (
+        <Reveal as="div" className="mt-12">
+          <h2 className="container-wide text-left text-2xl">Kitchens</h2>
+          <div className="mt-6">
+            <CategoryCarousel projects={kitchenProjects} categoryLabel="Kitchen" priorityFirst />
+          </div>
+        </Reveal>
+      )}
+
+      {kitchenProjects.length > 0 && bedroomProjects.length > 0 && (
+        <div className="container-wide">
+          <div className="my-8 border-t border-hairline" />
+        </div>
+      )}
+
+      {bedroomProjects.length > 0 && (
+        <Reveal as="div" className="mt-4">
+          <h2 className="container-wide text-left text-2xl">Bedrooms</h2>
+          <div className="mt-6">
+            <CategoryCarousel projects={bedroomProjects} categoryLabel="Bedroom" />
+          </div>
+        </Reveal>
+      )}
     </section>
   );
 }

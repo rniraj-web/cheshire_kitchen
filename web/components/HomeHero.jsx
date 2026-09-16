@@ -18,7 +18,7 @@ const SLIDE_DURATION = 5000;
 // "rise into place" still reads as a deliberate entrance without that cost.
 // The background carousel is the exception that proves the rule: its first
 // slide renders at a resolved opacity-100 with no transition (see below), so
-// it never has an in-progress animation during the initial paint — only
+// it never has an in-progress animation during the initial paint - only
 // later auto-rotations (well after LCP is recorded) ever cross-fade.
 const container = {
   hidden: {},
@@ -48,12 +48,12 @@ export default function HomeHero({ heroImages = [] }) {
 
   return (
     <section className="scrim-dark relative flex min-h-[600px] items-center overflow-hidden md:min-h-[85vh]">
-      {/* Background carousel — only the current slide is ever mounted, so
+      {/* Background carousel - only the current slide is ever mounted, so
           the initial paint fetches exactly one (priority) image rather than
           all five. AnimatePresence's initial={false} means that first slide
           renders straight into its resolved, fully-opaque state (no fade-in
-          during the LCP-measurement window); only later auto-rotations —
-          which happen well after LCP is recorded — cross-fade. */}
+          during the LCP-measurement window); only later auto-rotations -
+          which happen well after LCP is recorded - cross-fade. */}
       <div className="absolute inset-0">
         <AnimatePresence initial={false}>
           <motion.div
@@ -84,7 +84,7 @@ export default function HomeHero({ heroImages = [] }) {
           hero copy is light-on-dark here. */}
       <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/60 to-navy/15" />
       {/* Additional flat scrim on top, requested separately from the L-R
-          gradient above — keeps centered text legible everywhere regardless
+          gradient above - keeps centered text legible everywhere regardless
           of which carousel photo (light or dark) is showing, since centered
           copy now sits over the part of the image the gradient fades out. */}
       <div className="absolute inset-0 bg-black/25" />
@@ -106,7 +106,11 @@ export default function HomeHero({ heroImages = [] }) {
           className="flex flex-wrap justify-center gap-x-3 text-white"
         >
           {HEADLINE_WORDS.map((word, i) => (
-            <motion.span key={i} variants={wordVariant} className="inline-block">
+            <motion.span
+              key={i}
+              variants={wordVariant}
+              className="inline-block"
+            >
               {word}
             </motion.span>
           ))}
@@ -125,8 +129,9 @@ export default function HomeHero({ heroImages = [] }) {
           transition={{ delay: 0.4 }}
           className="mx-auto mt-6 max-w-md text-base leading-relaxed text-white/85"
         >
-          For half a century, Cheshire Kitchens & Bedrooms has designed, built and fitted
-          handcrafted kitchens and bedrooms across Cheshire — from first sketch to final fit.
+          For half a century, Cheshire Kitchens & Bedrooms has designed, built
+          and fitted handcrafted kitchens and bedrooms across Cheshire - from
+          first sketch to final fit.
         </motion.p>
 
         <motion.div
@@ -152,7 +157,11 @@ export default function HomeHero({ heroImages = [] }) {
         </motion.div>
 
         {heroImages.length > 1 && (
-          <div className="mt-10 flex justify-center gap-2" role="tablist" aria-label="Featured rooms">
+          <div
+            className="mt-10 flex justify-center gap-2"
+            role="tablist"
+            aria-label="Featured rooms"
+          >
             {heroImages.map((image, i) => (
               <button
                 key={image.url}
@@ -165,7 +174,9 @@ export default function HomeHero({ heroImages = [] }) {
               >
                 <span
                   className={`block h-1.5 rounded-full transition-all ${
-                    i === index ? "w-8 bg-white" : "w-1.5 bg-white/40 group-hover:bg-white/60"
+                    i === index
+                      ? "w-8 bg-white"
+                      : "w-1.5 bg-white/40 group-hover:bg-white/60"
                   }`}
                 />
               </button>

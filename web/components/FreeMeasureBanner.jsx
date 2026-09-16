@@ -18,15 +18,21 @@ export default function FreeMeasureBanner() {
             }}
             aria-hidden="true"
           />
-          <div className="relative max-w-xl">
-            <h2 className="text-white">Free No-Obligation Home Measure and Design Service</h2>
+          <div className="relative max-w-2xl">
+            <h2 className="text-white">
+              Free No-Obligation Home Measure and Design Service
+            </h2>
             <p className="mt-3 text-left text-base text-white/85">
-              Enquire today and one of our designers will visit your home, take measurements and
-              talk through the possibilities — no cost, no obligation.
+              Enquire today and one of our designers will visit your home, take
+              measurements and talk through the possibilities — no cost, no
+              obligation.
             </p>
           </div>
           <MagneticButton className="relative shrink-0">
-            <Link href="/showroom" className="btn-pill bg-white text-navy hover:bg-white/90">
+            <Link
+              href="/showroom"
+              className="btn-pill bg-white text-navy hover:bg-white/90"
+            >
               Enquire today
             </Link>
           </MagneticButton>
