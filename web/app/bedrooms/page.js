@@ -92,12 +92,12 @@ export default async function BedroomsPage() {
                   </a>
 
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=info@cheshirekitchens.co.uk&su=Kitchen%20Enquiry"
+                    href={whatsappHref()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-outline"
                   >
-                    Email us
+                    Message on WhatsApp
                   </a>
                 </div>
               </div>

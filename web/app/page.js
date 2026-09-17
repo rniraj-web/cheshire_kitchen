@@ -166,7 +166,7 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Visit us"
             title="See the finishes in person"
-            description={`${BUSINESS.addressLine1}, ${BUSINESS.addressLine2}, ${BUSINESS.addressLine3}`}
+            description={`${BUSINESS.addressLine1}, ${BUSINESS.addressLine2}`}
           />
           <Link
             href="/showroom"

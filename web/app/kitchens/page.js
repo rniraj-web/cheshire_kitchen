@@ -3,7 +3,7 @@ import RangeAccordion from "@/components/RangeAccordion";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/motion/Reveal";
 import Link from "next/link";
-import { BUSINESS } from "@/lib/config";
+import { BUSINESS, whatsappHref } from "@/lib/config";
 
 export const metadata = {
   title: "Kitchens",
@@ -76,7 +76,7 @@ export default async function KitchensPage() {
                     </p>
 
                     <p className="mt-1 text-sm font-medium text-ink">
-                      9:30am - 5pm, Monday to Saturday
+                      9:30am – 5pm, Monday to Saturday
                     </p>
 
                     <p className="text-sm text-ink-muted">
@@ -90,23 +90,14 @@ export default async function KitchensPage() {
                   <a href={BUSINESS.phoneHref} className="btn-primary">
                     Call {BUSINESS.phoneDisplay}
                   </a>
-                  {/* removed the whatsapp functionality and added email */}
-                  {/* <a
+
+                  <a
                     href={whatsappHref()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-outline"
                   >
                     Message on WhatsApp
-                  </a> */}
-
-                  <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=info@cheshirekitchens.co.uk&su=Kitchen%20Enquiry"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-outline"
-                  >
-                    Email us
                   </a>
                 </div>
               </div>
