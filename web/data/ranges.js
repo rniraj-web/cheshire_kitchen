@@ -7,28 +7,33 @@
 
 const ranges = [
   {
-    _id: "rational",
+    _id: "callerton",
     type: "kitchen",
-    brand: "Rational",
-    origin: "Germany",
-    description:
-      "Precision German engineering with soft-close mechanisms and near-silent hardware as standard across every cabinet.",
+    brand: "Callerton",
+    origin: "United Kingdom",
+    flag: "https://flagcdn.com/gb.svg",
+    description: "British-made shaker and contemporary cabinetry.",
     order: 0,
     images: [
       {
-        url: "/images/ranges/rational-1-onda.jpg",
-        alt: "Rational 'Onda' kitchen in gloss white with a curved island and dark oak worktop",
+        url: "/images/ranges/callerton-1.jpg",
+        alt: "Pale stone shaker kitchen island with breakfast bar seating, opening onto a dining and garden area",
         order: 0,
       },
       {
-        url: "/images/ranges/rational-2-cambia.jpg",
-        alt: "Rational 'Cambia' kitchen in soft grey with a rounded island and glazed display cabinets",
+        url: "/images/ranges/callerton-2.jpg",
+        alt: "Bold magenta shaker kitchen with glazed dresser units and a matching range cooker",
         order: 1,
       },
       {
-        url: "/images/ranges/rational-3-tio.jpg",
-        alt: "Rational 'Tio' kitchen in bronze woodgrain with a marble-effect splashback",
+        url: "/images/ranges/callerton-3.jpg",
+        alt: "Dark green shaker kitchen island with a Belfast sink and brass tap, in a bright period-style room",
         order: 2,
+      },
+      {
+        url: "/images/ranges/callerton-4.jpg",
+        alt: "Sage green shaker kitchen with a large waterfall-edge island and integrated ovens",
+        order: 3,
       },
     ],
   },
@@ -37,7 +42,9 @@ const ranges = [
     type: "kitchen",
     brand: "Ewe",
     origin: "Austria",
-    description: "Handmade Austrian cabinetry with a focus on natural timber veneers.",
+    flag: "https://flagcdn.com/at.svg",
+    description:
+      "Handmade Austrian cabinetry with a focus on natural timber veneers.",
     order: 1,
     images: [
       {
@@ -63,12 +70,42 @@ const ranges = [
     ],
   },
   {
+    _id: "rational",
+    type: "kitchen",
+    brand: "Rational",
+    origin: "Germany",
+    flag: "https://flagcdn.com/de.svg",
+    description:
+      "Precision German engineering with soft-close mechanisms and near-silent hardware as standard across every cabinet.",
+    order: 2,
+    images: [
+      {
+        url: "/images/ranges/rational-1-onda.jpg",
+        alt: "Rational 'Onda' kitchen in gloss white with a curved island and dark oak worktop",
+        order: 0,
+      },
+      {
+        url: "/images/ranges/rational-2-cambia.jpg",
+        alt: "Rational 'Cambia' kitchen in soft grey with a rounded island and glazed display cabinets",
+        order: 1,
+      },
+      {
+        url: "/images/ranges/rational-3-tio.jpg",
+        alt: "Rational 'Tio' kitchen in bronze woodgrain with a marble-effect splashback",
+        order: 2,
+      },
+    ],
+  },
+
+  {
     _id: "snaidero",
     type: "kitchen",
     brand: "Snaidero",
     origin: "Italy",
-    description: "Bold Italian design with sculptural handles and lacquer finishes.",
-    order: 2,
+    flag: "https://flagcdn.com/it.svg",
+    description:
+      "Bold Italian design with sculptural handles and lacquer finishes.",
+    order: 3,
     images: [
       {
         url: "/images/ranges/snaidero-1.jpg",
@@ -92,41 +129,13 @@ const ranges = [
       },
     ],
   },
-  {
-    _id: "callerton",
-    type: "kitchen",
-    brand: "Callerton",
-    origin: "United Kingdom",
-    description: "British-made shaker and contemporary cabinetry.",
-    order: 3,
-    images: [
-      {
-        url: "/images/ranges/callerton-1.jpg",
-        alt: "Pale stone shaker kitchen island with breakfast bar seating, opening onto a dining and garden area",
-        order: 0,
-      },
-      {
-        url: "/images/ranges/callerton-2.jpg",
-        alt: "Bold magenta shaker kitchen with glazed dresser units and a matching range cooker",
-        order: 1,
-      },
-      {
-        url: "/images/ranges/callerton-3.jpg",
-        alt: "Dark green shaker kitchen island with a Belfast sink and brass tap, in a bright period-style room",
-        order: 2,
-      },
-      {
-        url: "/images/ranges/callerton-4.jpg",
-        alt: "Sage green shaker kitchen with a large waterfall-edge island and integrated ovens",
-        order: 3,
-      },
-    ],
-  },
+
   {
     _id: "daval",
     type: "bedroom",
     brand: "Daval",
     origin: "United Kingdom",
+    flag: "https://flagcdn.com/gb.svg",
     description: "British-made fitted bedroom furniture for every room shape.",
     order: 0,
     images: [

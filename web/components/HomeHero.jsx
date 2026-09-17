@@ -82,7 +82,7 @@ export default function HomeHero({ heroImages = [] }) {
           opaque where the text sits, fading out so the photo reads fully on
           the right. Ours uses the brand navy rather than white since our
           hero copy is light-on-dark here. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/60 to-navy/15" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/50 to-navy/5" />
       {/* Additional flat scrim on top, requested separately from the L-R
           gradient above - keeps centered text legible everywhere regardless
           of which carousel photo (light or dark) is showing, since centered

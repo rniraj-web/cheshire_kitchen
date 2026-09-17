@@ -206,12 +206,12 @@ export default function CookiesPolicyPage() {
                     </a>
 
                     <a
-                      href={whatsappHref()}
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=info@cheshirekitchens.co.uk&su=Kitchen%20Enquiry"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-outline"
                     >
-                      Message on WhatsApp
+                      Email us
                     </a>
                   </div>
                 </div>

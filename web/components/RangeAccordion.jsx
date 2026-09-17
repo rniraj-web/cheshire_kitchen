@@ -44,9 +44,16 @@ export default function RangeAccordion({ ranges, typeLabel }) {
                   <span className="text-lg font-medium text-ink">
                     {range.brand}
                   </span>
-                  <span className="ml-3 text-sm text-ink-muted">
+                  <span className="ml-3 text-md text-ink-muted">
                     {range.origin}
                   </span>
+                  {range.flag && (
+                    <img
+                      src={range.flag}
+                      alt={`${range.origin} flag`}
+                      className="ml-1 h-4.5 w-6 rounded-xs object-cover shadow-xs border border-black/10 inline-block align-middle"
+                    />
+                  )}
                 </span>
                 <motion.span
                   aria-hidden="true"

@@ -7,10 +7,10 @@ export default function Footer() {
       <div className="container-wide grid gap-10 py-10 md:grid-cols-4">
         <div className="md:col-span-2">
           <span className="text-xl font-semibold text-ink">
-            Cheshire Kitchens
+            Cheshire Kitchens Limited
           </span>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-muted">
-            Handcrafted kitchens and bedrooms, designed with you - celebrating{" "}
+            Handcrafted kitchens and bedrooms, designed with you celebrating{" "}
             {new Date().getFullYear() - BUSINESS.foundedYear} years serving
             Cheshire.
           </p>
@@ -98,16 +98,14 @@ export default function Footer() {
       </div>
 
       <div className="container-wide flex flex-col gap-2 py-6 text-xs text-ink-muted md:flex-row md:items-center md:justify-between">
-        <p>© {new Date().getFullYear()} Cheshire Kitchens & Bedrooms.</p>
         <p>
-          <Link href="/cookies-policy">Cookies Policy</Link>
-        </p>
-        <p>
-          <Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
+          © {new Date().getFullYear()} Cheshire Kitchens Limited. Company
+          Registration No: 01278650
         </p>
         <p>
           Designed &amp; built by{" "}
           <a
+            className="md:text-lg"
             href="https://hivebyte.co.uk"
             target="_blank"
             rel="noopener"
@@ -120,9 +118,15 @@ export default function Footer() {
               textDecoration: "none !important",
             }}
           >
-            HiveByte Technologies
+            HiveByte Technology
           </a>
           . All rights reserved.
+        </p>
+        <p>
+          <Link href="/cookies-policy">Cookies Policy</Link>
+        </p>
+        <p>
+          <Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
         </p>
       </div>
     </footer>

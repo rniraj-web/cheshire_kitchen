@@ -4,7 +4,8 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import WhatsAppButton from "./WhatsAppButton";
+import CookieBanner from "./CookieBanner";
+// import WhatsAppButton from "./WhatsAppButton";
 
 export default function SiteChrome({ children }) {
   const pathname = usePathname();
@@ -26,7 +27,8 @@ export default function SiteChrome({ children }) {
         </AnimatePresence>
       </main>
       <Footer />
-      <WhatsAppButton />
+      <CookieBanner />
+      {/* <WhatsAppButton /> */}
     </>
   );
 }

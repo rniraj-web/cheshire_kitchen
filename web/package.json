@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "jszip": "^3.10.2",
     "mongoose": "^8.6.0",
     "motion": "^13.3.0",
     "next": "16.3.5",

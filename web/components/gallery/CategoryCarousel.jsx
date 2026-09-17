@@ -4,9 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ImageLightbox from "./ImageLightbox";
 
-export default function CategoryCarousel({ projects, categoryLabel, priorityFirst = false }) {
+const SLIDE_DURATION = 3000;
+
+export default function CategoryCarousel({
+  projects,
+  categoryLabel,
+  priorityFirst = false,
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxProject, setLightboxProject] = useState(null);
+  const [paused, setPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef(null);
   const trackRef = useRef(null);
   const cardRefs = useRef([]);
 
@@ -32,15 +41,71 @@ export default function CategoryCarousel({ projects, categoryLabel, priorityFirs
     return () => observer.disconnect();
   }, [projects.length]);
 
+  // ── Only auto-scroll when this carousel is in the viewport ──
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.5 }, // at least half visible
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  // ── Auto-scroll (add isVisible to the guard + deps) ──
+  useEffect(() => {
+    if (projects.length < 2 || paused || lightboxProject || !isVisible) return;
+    //                                                       ^^^^^^^^^^
+    const id = setInterval(() => {
+      setActiveIndex((prev) => {
+        const next = (prev + 1) % projects.length;
+        cardRefs.current[next]?.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+        return prev;
+      });
+    }, SLIDE_DURATION);
+    return () => clearInterval(id);
+  }, [projects.length, paused, lightboxProject, isVisible]);
+
+  // - Pause on user interaction, resume after idle -
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    let resumeTimer;
+    const handleInteraction = () => {
+      setPaused(true);
+      clearTimeout(resumeTimer);
+      // Resume auto-scroll after 2× the slide duration of inactivity
+      resumeTimer = setTimeout(() => setPaused(false), SLIDE_DURATION * 2);
+    };
+    // pointerdown covers mouse + touch; wheel covers trackpad/scroll-wheel
+    track.addEventListener("pointerdown", handleInteraction);
+    track.addEventListener("wheel", handleInteraction, { passive: true });
+    return () => {
+      clearTimeout(resumeTimer);
+      track.removeEventListener("pointerdown", handleInteraction);
+      track.removeEventListener("wheel", handleInteraction);
+    };
+  }, []);
+
   const scrollToIndex = (index) => {
+    setPaused(true);
+    setTimeout(() => setPaused(false), SLIDE_DURATION * 2);
     const clamped = Math.max(0, Math.min(projects.length - 1, index));
-    cardRefs.current[clamped]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    cardRefs.current[clamped]?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
   };
 
   if (projects.length === 0) return null;
 
   return (
-    <div className="relative">
+    <div className="relative" ref={containerRef}>
       <div
         ref={trackRef}
         className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-[calc(50%-9rem)] py-8 sm:px-[calc(50%-10rem)] md:gap-6 md:px-[calc(50%-12rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -53,7 +118,9 @@ export default function CategoryCarousel({ projects, categoryLabel, priorityFirs
               ref={(el) => (cardRefs.current[i] = el)}
               data-index={i}
               type="button"
-              onClick={() => (isActive ? setLightboxProject(project) : scrollToIndex(i))}
+              onClick={() =>
+                isActive ? setLightboxProject(project) : scrollToIndex(i)
+              }
               className="card relative aspect-[4/3] w-72 shrink-0 snap-center overflow-hidden transition-[filter,opacity,transform] duration-500 ease-out sm:w-80 md:w-96"
               style={{
                 opacity: isActive ? 1 : 0.45,
@@ -71,13 +138,19 @@ export default function CategoryCarousel({ projects, categoryLabel, priorityFirs
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent" />
               <div className="absolute bottom-4 left-4 text-left text-white">
-                <p className="text-xs font-medium tracking-wide uppercase opacity-80">{categoryLabel}</p>
-                <p className="font-display text-lg font-semibold">{project.title}</p>
+                <p className="text-xs font-medium tracking-wide uppercase opacity-80">
+                  {categoryLabel}
+                </p>
+                <p className="font-display text-lg font-semibold">
+                  {project.title}
+                </p>
               </div>
               {/* Visually-hidden action hint — part of the button's text
                   content (not a separate aria-label), so it can't drift out
                   of sync with the visible title text above. */}
-              <span className="sr-only">{isActive ? " — enlarge photo" : " — show this photo"}</span>
+              <span className="sr-only">
+                {isActive ? " — enlarge photo" : " — show this photo"}
+              </span>
             </button>
           );
         })}
@@ -108,7 +181,10 @@ export default function CategoryCarousel({ projects, categoryLabel, priorityFirs
         {activeIndex + 1} / {projects.length}
       </p>
 
-      <ImageLightbox project={lightboxProject} onClose={() => setLightboxProject(null)} />
+      <ImageLightbox
+        project={lightboxProject}
+        onClose={() => setLightboxProject(null)}
+      />
     </div>
   );
 }
