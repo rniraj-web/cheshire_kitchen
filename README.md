@@ -45,3 +45,4 @@ new photos in a folder, the same way the current photos were added.
   swap for the exact colour from the shop signage.
 - **Siemens partnership assets** — the homepage currently shows a text badge; swap in their
   logo/lockup once you have the assets you're contractually permitted to use.
+# cheshire_kitchen
