@@ -10,9 +10,7 @@ import { AnimatePresence, motion } from "motion/react";
 const OPEN_DURATION = 0.3;
 const CLOSE_DURATION = 0.9;
 
-export default function ImageLightbox({ project, onClose }) {
-  const image = project?.coverImage;
-
+export default function ImageLightbox({ image, onClose }) {
   useEffect(() => {
     if (!image) return;
 

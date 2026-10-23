@@ -80,14 +80,14 @@ export default function HomeHero({ heroImages = [] }) {
 
       {/* Left-to-right scrim, referencing the reference site's hero treatment:
           opaque where the text sits, fading out so the photo reads fully on
-          the right. Ours uses the brand navy rather than white since our
-          hero copy is light-on-dark here. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/50 to-navy/5" />
+          the right. Uses neutral black rather than navy so the photos read
+          true-to-color instead of picking up a blue cast. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
       {/* Additional flat scrim on top, requested separately from the L-R
           gradient above - keeps centered text legible everywhere regardless
           of which carousel photo (light or dark) is showing, since centered
           copy now sits over the part of the image the gradient fades out. */}
-      <div className="absolute inset-0 bg-black/25" />
+      <div className="absolute inset-0 bg-black/10" />
 
       <div className="container-wide relative z-10 mx-auto max-w-3xl text-center">
         <motion.p
@@ -116,7 +116,7 @@ export default function HomeHero({ heroImages = [] }) {
           ))}
           <motion.span
             variants={wordVariant}
-            className="inline-block bg-gradient-to-r from-[#f0c396] to-white bg-clip-text text-transparent"
+            className="inline-block bg-gradient-to-r from-[#f0c396] to-white bg-clip-text text-transparent md:pb-4 pb-1"
           >
             how you live.
           </motion.span>

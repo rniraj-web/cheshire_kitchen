@@ -1,14 +1,22 @@
-import ProductImage from "@/components/ProductImage";
+import ImageCarousel from "@/components/ImageCarousel";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/motion/Reveal";
-import { BUSINESS, whatsappHref } from "@/lib/config";
+import { BUSINESS } from "@/lib/config";
 
 export const metadata = {
   title: "Showroom",
-  description: `Visit our showroom at ${BUSINESS.addressLine1}, ${BUSINESS.addressLine2}. Call, WhatsApp, or send an enquiry.`,
+  description: `Visit our showroom at ${BUSINESS.addressLine1}, ${BUSINESS.addressLine2}, ${BUSINESS.addressLine3}. Call, WhatsApp, or send an enquiry.`,
 };
 
-const MAP_QUERY = encodeURIComponent(`${BUSINESS.addressLine1}, ${BUSINESS.addressLine2}`);
+const MAP_QUERY = encodeURIComponent(
+  `${BUSINESS.addressLine1}, ${BUSINESS.addressLine2}, ${BUSINESS.addressLine3}`,
+);
+
+const SHOWROOM_IMAGES = [
+  { url: "/images/showroom/showroom-1.png", alt: "Showroom kitchen display, sink and cabinetry" },
+  { url: "/images/showroom/showroom-2.png", alt: "Showroom kitchen display, hob and extractor" },
+  { url: "/images/showroom/showroom-3.png", alt: "Showroom kitchen display, hob detail" },
+];
 
 export default function ShowroomPage() {
   return (
@@ -19,20 +27,26 @@ export default function ShowroomPage() {
             <p className="eyebrow mb-5">Showroom</p>
             <h1 className="text-left">Come and see the finishes in person.</h1>
             <p className="mt-6 max-w-md text-left text-base leading-relaxed text-ink-muted">
-              Our Hazel Grove showroom has full display kitchens and bedrooms, along with
-              worktop, door and paint samples you can hold up against your own space.
+              Our Hazel Grove showroom has full display kitchens and bedrooms,
+              along with worktop, door and paint samples you can hold up against
+              your own space.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href={BUSINESS.phoneHref} className="btn-primary">
                 Call {BUSINESS.phoneDisplay}
               </a>
-              <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className="btn-outline">
-                Message on WhatsApp
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@cheshirekitchens.co.uk&su=Kitchen%20Enquiry"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline"
+              >
+                Email us
               </a>
             </div>
           </Reveal>
           <Reveal delay={0.15} fade={false}>
-            <ProductImage ratio="4/3" fallbackLabel="Showroom shopfront, Hazel Grove" />
+            <ImageCarousel images={SHOWROOM_IMAGES} />
           </Reveal>
         </div>
       </section>
@@ -46,6 +60,8 @@ export default function ShowroomPage() {
                 {BUSINESS.addressLine1}
                 <br />
                 {BUSINESS.addressLine2}
+                <br />
+                {BUSINESS.addressLine3}
               </p>
             </div>
 
@@ -53,7 +69,10 @@ export default function ShowroomPage() {
               <h2 className="text-xl">Opening hours</h2>
               <dl className="mt-2 space-y-1">
                 {BUSINESS.hours.map(([day, hours]) => (
-                  <div key={day} className="flex justify-between gap-6 text-sm text-ink-muted tabular-nums">
+                  <div
+                    key={day}
+                    className="flex justify-between text-sm text-ink-muted tabular-nums md:w-100"
+                  >
                     <dt>{day}</dt>
                     <dd>{hours}</dd>
                   </div>
@@ -65,8 +84,8 @@ export default function ShowroomPage() {
           <Reveal delay={0.1}>
             <h2 className="text-xl">Send us an enquiry</h2>
             <p className="mt-2 text-left text-sm text-ink-muted">
-              Tell us a little about your project and a designer will get back to you within one
-              working day.
+              Tell us a little about your project and a designer will get back
+              to you within one working day.
             </p>
             <div className="mt-6">
               <ContactForm />

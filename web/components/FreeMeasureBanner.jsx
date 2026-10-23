@@ -24,7 +24,7 @@ export default function FreeMeasureBanner() {
             </h2>
             <p className="mt-3 text-left text-base text-white/85">
               Enquire today and one of our designers will visit your home, take
-              measurements and talk through the possibilities — no cost, no
+              measurements and talk through the possibilities no cost, no
               obligation.
             </p>
           </div>

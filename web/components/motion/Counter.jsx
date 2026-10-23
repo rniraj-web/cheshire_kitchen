@@ -5,7 +5,7 @@ import { useInView, useMotionValue, useSpring } from "motion/react";
 
 export default function Counter({ value, suffix = "", prefix = "" }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
   const motionValue = useMotionValue(0);
   const spring = useSpring(motionValue, { damping: 30, stiffness: 70 });
   const [display, setDisplay] = useState(0);

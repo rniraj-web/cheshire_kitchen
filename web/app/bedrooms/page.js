@@ -21,7 +21,7 @@ export default async function BedroomsPage() {
           <SectionHeading
             eyebrow="Bedrooms"
             title="Fitted bedrooms, built to fit your room exactly"
-            description="Our Daval range is shown in full in our showroom — browse a taste of it below."
+            description="Our Daval range is shown in full in our showroom, browse a taste of it below."
           />
         </Reveal>
 
@@ -92,12 +92,12 @@ export default async function BedroomsPage() {
                   </a>
 
                   <a
-                    href={whatsappHref()}
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=info@cheshirekitchens.co.uk&su=Kitchen%20Enquiry"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-outline"
                   >
-                    Message on WhatsApp
+                    Email us
                   </a>
                 </div>
               </div>

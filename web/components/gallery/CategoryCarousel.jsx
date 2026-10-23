@@ -182,7 +182,7 @@ export default function CategoryCarousel({
       </p>
 
       <ImageLightbox
-        project={lightboxProject}
+        image={lightboxProject?.coverImage}
         onClose={() => setLightboxProject(null)}
       />
     </div>

@@ -51,7 +51,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Our story"
               title="Fifty years of designing kitchens for Cheshire homes"
-              description="Founded by Shirley Sharp in 1976, the business has grown into a family-run team of designers and fitters who still measure, design and build every project themselves - nothing dropshipped, nothing outsourced."
+              description="Founded by Shirley Sharp in 1976, the business has grown into a family-run team of designers and fitters who still measure, design and build every project themselves nothing dropshipped, nothing outsourced."
             />
           </Reveal>
           <Reveal delay={0.1} className="flex justify-center">
@@ -73,7 +73,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Official partner"
               title="Proud Siemens appliance partner"
-              description="We're proud to partner with Siemens, fitting their kitchen appliances as standard across our ranges - precision engineering to match the cabinetry it sits in."
+              description="We're proud to partner with Siemens, fitting their kitchen appliances as standard across our ranges, precision engineering to match the cabinetry it sits in."
             />
           </Reveal>
         </div>
@@ -86,7 +86,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Our ranges"
               title="Kitchens and bedrooms, from four countries of craftsmanship"
-              description="Rational, Ewe, Snaidero and Callerton for kitchens; Daval for bedrooms - each range shown in full in our showroom."
+              description="Rational, Ewe, Snaidero and Callerton for kitchens; Daval for bedrooms, each range shown in full in our showroom."
             />
           </Reveal>
           <div className="mt-10 grid gap-6 md:grid-cols-5">
@@ -166,7 +166,7 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Visit us"
             title="See the finishes in person"
-            description={`${BUSINESS.addressLine1}, ${BUSINESS.addressLine2}`}
+            description={`${BUSINESS.addressLine1}, ${BUSINESS.addressLine2}, ${BUSINESS.addressLine3}`}
           />
           <Link
             href="/showroom"

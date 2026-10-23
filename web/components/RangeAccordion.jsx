@@ -84,7 +84,12 @@ export default function RangeAccordion({ ranges, typeLabel }) {
                     <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                       {images.length > 0 ? (
                         images.map((image, idx) => (
-                          <ProductImage key={idx} image={image} ratio="4/3" />
+                          <ProductImage
+                            key={idx}
+                            image={image}
+                            ratio="4/3"
+                            enlargeable
+                          />
                         ))
                       ) : (
                         <ProductImage

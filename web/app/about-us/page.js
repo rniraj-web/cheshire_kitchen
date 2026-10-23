@@ -26,7 +26,7 @@ const VALUES = [
   },
   {
     title: "Photorealistic design previews",
-    body: "Every design is presented as a photorealistic CAD render before you commit, so you can see - and tweak - exactly how your finished room will look.",
+    body: "Every design is presented as a photorealistic CAD render before you commit, so you can see and tweak exactly how your finished room will look.",
   },
 ];
 
@@ -41,13 +41,17 @@ export default function AboutUsPage() {
               Celebrating {YEARS_TRADING} years of excellence
             </h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-ink-muted">
-              For {YEARS_TRADING} years, we&rsquo;ve built a proud history of
-              quality, trust and success. This year, we&rsquo;re celebrating
-              five decades of experience and looking forward to the future.
+              For {YEARS_TRADING} years, we have built a proud history of
+              quality, trust and success. This year, we are celebrating five
+              decades of experience and looking forward to the future.
             </p>
           </Reveal>
           <Reveal delay={0.15} fade={false}>
             <ProductImage
+              image={{
+                url: "/images/about-us/storefront.jpeg",
+                alt: "Our showroom, Hazel Grove",
+              }}
               ratio="4/3"
               fallbackLabel="Our showroom, Hazel Grove"
             />
@@ -61,54 +65,36 @@ export default function AboutUsPage() {
           className="container-wide max-w-3xl space-y-6 text-center leading-relaxed text-ink"
         >
           <p className="text-left md:text-justify">
-            Cheshire Kitchens and Bedrooms was established by Shirley Sharp in
-            1976. After an extremely good start to the business she was soon
-            joined by her husband Alan and son Gary. Gary and wife Rita now own
-            and run the business alongside Lee Gowland. Lee joined the company
-            in 1983 and has over 30 years of kitchen design experience. Daniel
-            Jones joined the company much more recently in 2013 but brought with
-            him 5 years of previous experience within the industry. Between
-            Gary, Lee and Daniel, they have designed and project managed
-            thousands of kitchens. Working from architect&rsquo;s plans,
-            personal site surveys and customers own measurements, they are all
-            still enjoying the challenge that each individual design brings.
+            Our story began when in 1976, Shirley Sharp established the business
+            and as demand quickly grew, was soon joined by husband Alan and son
+            Gary, cementing our foundation as a true family-run business.
           </p>
 
           <p className="text-left md:text-justify">
-            The design process usually begins with a visit to our extensive
-            showroom on the A6 in Hazel Grove, Stockport. This visit will allow
-            you to get a feel for our product offering, whilst receiving expert
-            advice on each option. This is also the best time to bring along
-            some rough measurements
-            <ImageModal
-              image="/images/examples/Example_kitchen_measurements.jpg"
-              alt="Example of kitchen measurements"
-            />
-            or an architect&rsquo;s plan of the room. This enables us to better
-            advise you on design possibilities and from this we can produce a
-            guide price for the kitchen. Following on from this initial meeting
-            we can book an appointment to attend the property, carrying out a
-            full survey, giving us all the information to produce a full design
-            and quotation. Our design presentations include photorealistic
-            images of the design, rendered from the most up to date CAD design
-            software{" "}
-            <ImageModal
-              image="/images/examples/Rendered-Image-Example.jpg"
-              alt="Example of a kitchen CAD design"
-            />
-            . Giving you the best example of how your kitchen will look and
-            letting you tweak every component to ensure the resulting living
-            space will suit you&rsquo;re lifestyle perfectly.
+            7 years later, with Shirley taking a more relaxed role, Lee Gowland
+            joined the team to work alongside Gary, with Gary&rsquo;s wife Rita
+            joining soon after.
           </p>
-
           <p className="text-left md:text-justify">
-            For both Kitchens and Bedrooms we have our own team of in house
-            fitters and can project manage each job from start to finish if
-            required. We can also work on a supply only basis for both personal
-            or builders jobs. For each of the above options we can produce
-            plans, including finished building plans, electrical plans, ducting
-            plans and so on. All of which ensures the installation runs
-            smoothly.
+            Once Shirley & Alan retired in 1996, the next 22 years saw the team
+            of Gary, Rita & Lee continuing to work together, designing and
+            project managing thousands of kitchens and bedrooms.
+          </p>
+          <p className="text-left md:text-justify">
+            Following Gary & Rita&rsquo;s retirement in 2018, Family traditions
+            now continue to live on through Lee, his daughter Charlotte and son
+            Max.
+          </p>
+          <p className="text-left md:text-justify">
+            Whether working from complex architect plans, conducting detailed
+            personal site surveys, or starting with a customer&rsquo;s own
+            measurements, we bring together half a century of craftsmanship and
+            design expertise to every project.
+          </p>
+          <p className="text-left md:text-justify">
+            While technology and interior trends have evolved over the last 50
+            years, our passion remains unchanged, delivering exceptional,
+            personalised design, supply and installation to our local community.
           </p>
           <Link href="/showroom" className="btn-primary mt-4 inline-flex">
             Visit the showroom

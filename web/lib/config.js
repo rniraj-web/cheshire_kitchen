@@ -9,12 +9,12 @@ export const SITE_URL =
 export const BUSINESS = {
   name: "Cheshire Kitchens & Bedrooms",
   foundedYear: 1976,
-  addressLine1: "57-67 London Rd",
+  addressLine1: "83-91 London Rd",
   addressLine2: "Hazel Grove, Stockport",
   addressLine3: "Cheshire, SK7 4AX",
   // TODO: replace with the real showroom phone number.s
-  phoneDisplay: "0161 929 0000",
-  phoneHref: "tel:+441619290000",
+  phoneDisplay: "0161 456 4188",
+  phoneHref: "tel:+440161 456 4188",
   // TODO: replace with the real WhatsApp number (international format, digits only).
   // whatsappNumber: "447700900000",
   // whatsappMessage:
@@ -22,8 +22,7 @@ export const BUSINESS = {
   email: "info@cheshirekitchens.co.uk",
   emailHref: "mailto:info@cheshirekitchens.co.uk",
   hours: [
-    ["Monday – Friday", "9:00 – 17:30"],
-    ["Saturday", "10:00 – 16:00"],
+    ["Monday - Saturday", "9:00 – 17:30"],
     ["Sunday", "Closed"],
   ],
 };
